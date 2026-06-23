@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Activity, Users, Calendar, AlertCircle, Bell, Search, Menu, CheckCircle } from 'lucide-react'
 import api from '../lib/api'
 
@@ -33,18 +34,18 @@ export default function DoctorDashboard() {
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">MedAssist</span>
         </div>
         <nav className="flex-1 p-4 space-y-1">
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 bg-blue-50 text-blue-700 rounded-lg font-medium transition-colors">
+          <Link to="/doctor" className="flex items-center gap-3 px-3 py-2.5 bg-blue-50 text-blue-700 rounded-lg font-medium transition-colors">
             <Activity size={20} />
             Dashboard
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition-colors">
+          </Link>
+          <Link to="#" className="flex items-center gap-3 px-3 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition-colors">
             <Users size={20} />
             Patients
-          </a>
-          <a href="#" className="flex items-center gap-3 px-3 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition-colors">
+          </Link>
+          <Link to="/doctor/appointments" className="flex items-center gap-3 px-3 py-2.5 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-lg font-medium transition-colors">
             <Calendar size={20} />
             Appointments
-          </a>
+          </Link>
         </nav>
       </aside>
 

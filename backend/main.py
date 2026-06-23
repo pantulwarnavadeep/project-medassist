@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
-from routes import prescriptions, chatbot, twilio_webhook
+from routes import prescriptions, chatbot, twilio_webhook, appointments
 from services.scheduler import start_scheduler
 
 Base.metadata.create_all(bind=engine)
@@ -18,6 +18,7 @@ app.add_middleware(
 app.include_router(prescriptions.router, prefix="/api")
 app.include_router(chatbot.router, prefix="/api")
 app.include_router(twilio_webhook.router, prefix="/api")
+app.include_router(appointments.router, prefix="/api")
 
 start_scheduler()
 
