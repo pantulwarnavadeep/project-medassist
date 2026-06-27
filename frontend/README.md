@@ -1,16 +1,29 @@
-# React + Vite
+# MedAssist Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This frontend powers the MedAssist patient and doctor experiences using React, Vite, Tailwind CSS, and FullCalendar.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```powershell
+cd frontend
+npm install
+npm run dev
+```
 
-## React Compiler
+The app expects the backend API at `http://localhost:8000/api` by default.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Optional environment variable
 
-## Expanding the ESLint configuration
+To change the backend URL, create a `.env` file in `frontend` and add:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```env
+VITE_API_BASE_URL=http://localhost:8000/api
+```
+
+## Key files
+
+- `src/App.jsx` — main router and page routes
+- `src/pages/DoctorDashboard.jsx` — doctor overview with alerts and patient status
+- `src/pages/Appointments.jsx` — appointment calendar and scheduling
+- `src/pages/PatientPortal.jsx` — patient prescriptions and AI chat
+- `src/lib/api.js` — API helper functions

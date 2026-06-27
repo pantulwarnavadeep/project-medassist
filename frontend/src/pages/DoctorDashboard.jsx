@@ -86,6 +86,19 @@ export default function DoctorDashboard() {
               <p className="text-slate-500 mt-1">Here is your practice overview for today.</p>
             </div>
 
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-3xl bg-gradient-to-r from-sky-600 to-cyan-500 p-6 shadow-lg text-white">
+                <p className="text-xs uppercase tracking-[0.24em] text-sky-100/70">Smart workflow</p>
+                <h2 className="mt-4 text-2xl font-semibold">4 medication alerts ready</h2>
+                <p className="mt-3 text-sm text-sky-100/90">AI-guided summaries highlight missed doses and follow-up actions so you can prioritize care quickly.</p>
+              </div>
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Patient insight</p>
+                <h2 className="mt-4 text-2xl font-semibold text-slate-900">97% adherence trend</h2>
+                <p className="mt-3 text-sm text-slate-500">Track patient compliance and see which cases need a timely intervention.</p>
+              </div>
+            </div>
+
             {/* Stats Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {stats.map((s, i) => {

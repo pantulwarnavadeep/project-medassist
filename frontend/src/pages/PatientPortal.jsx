@@ -6,7 +6,7 @@ export default function PatientPortal({ patientId = 1 }) {
   const [prescriptions, setPrescriptions] = useState([])
   const [question, setQuestion] = useState('')
   const [messages, setMessages] = useState([
-    { role: 'ai', text: "Hello! I'm your MedAssist AI. Ask me any questions about your prescriptions or side effects." }
+    { role: 'ai', text: "Hello! I'm your MedAssist AI. I can answer questions about your prescriptions, dosing, and refill guidance." }
   ])
   const [loading, setLoading] = useState(false)
   const chatEndRef = useRef(null)
@@ -65,6 +65,29 @@ export default function PatientPortal({ patientId = 1 }) {
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900">Your Care Plan</h1>
           <p className="text-slate-500 mt-2 text-lg">Manage your prescriptions and ask questions safely.</p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="rounded-3xl border border-teal-100 bg-teal-50 p-6 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.24em] text-teal-700">Quick actions</p>
+            <h2 className="mt-4 text-2xl font-semibold text-slate-900">Try one of these prompts</h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {['How do I take Lisinopril?', 'Can I take this with food?', 'What if I miss a dose?'].map((text) => (
+                <button
+                  key={text}
+                  onClick={() => setQuestion(text)}
+                  className="rounded-full border border-teal-200 bg-white px-4 py-2 text-sm font-medium text-teal-700 transition hover:border-teal-300 hover:bg-teal-100"
+                >
+                  {text}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-400">Medication health</p>
+            <h2 className="mt-4 text-2xl font-semibold text-slate-900">2 active prescriptions</h2>
+            <p className="mt-3 text-sm text-slate-500">Review your current medications and ask the AI if you need a refill or dose reminder.</p>
+          </div>
         </div>
 
         {/* Prescriptions List */}
