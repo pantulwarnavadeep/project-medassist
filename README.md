@@ -8,50 +8,32 @@
   <img src="https://img.shields.io/badge/Tailwind-CSS-38B2AC" alt="Tailwind CSS" />
 </p>
 
-MedAssist is a care coordination prototype that helps clinics, doctors, and patients manage appointments, prescriptions, and medication conversations. It combines a FastAPI backend, a React/Vite frontend, and integrations for SMS reminders and conversational AI.
+MedAssist is a modern care coordination platform designed to help clinics, doctors, and patients stay connected around appointments, prescriptions, and medication support.
 
-## Overview
+## ✨ Why MedAssist?
 
-- Modular backend with routes, services, and SQL models
-- Single-page React frontend for doctors and patients
-- Integrations: Twilio for SMS, Claude service for conversational assistance, FullCalendar for scheduling
+- AI-assisted patient conversations with context from prescriptions and doctor notes
+- A doctor dashboard for alerts, compliance tracking, and patient oversight
+- A patient portal for prescriptions, reminders, and guided medication support
+- A modular architecture that separates backend services, API routes, and frontend experiences
 
-## Key features
+## 🚀 Core features
 
-- Doctor dashboard: patient lists, alerts, risk indicators
-- Patient portal: view prescriptions, ask medication questions, receive reminders
-- Appointments: create, list, and fetch by doctor or patient
-- Prescriptions: create and fetch prescription records with dosage and notes
-- Conversational assistant: contextual chat using prescription and appointment data
+- Doctor dashboard with patient risk visibility and actionable alerts
+- Appointment calendar for scheduling and rescheduling
+- Prescription management with dosage, frequency, and notes
+- Conversational medication assistant for patient questions
+- Twilio-powered reminders and notification workflows
 
-## Architecture
+## 🛠️ Tech stack
 
-- backend/: FastAPI app, routes split under `routes/`, DB layer in `database.py` and `models/`
-- frontend/: React + Vite app under `src/`, API client in `src/lib/api.js`
-- services/: glue code for AI and Twilio integrations
+- Backend: Python, FastAPI, SQLAlchemy
+- Frontend: React, Vite, Tailwind CSS
+- Integrations: Twilio, Claude AI service, FullCalendar
 
-## Prerequisites
+## ▶️ Getting started
 
-- Python 3.10 or newer
-- Node.js 18+ and npm
-- Git configured with access to your GitHub repo (SSH key or saved credentials)
-
-## Environment variables
-
-Create a `.env` in the `backend/` folder or set variables in your environment. Important variables used by the project:
-
-- `DATABASE_URL` — SQLAlchemy database URL (sqlite:///./dev.db or a Postgres URI)
-- `TWILIO_ACCOUNT_SID` — Twilio account SID
-- `TWILIO_AUTH_TOKEN` — Twilio auth token
-- `TWILIO_PHONE_NUMBER` — From number for SMS
-- `CLAUDE_API_KEY` — API key for Claude service (if used)
-- `VITE_API_BASE_URL` — Frontend environment variable for API base URL (set in frontend .env when building)
-
-## Local development
-
-Follow these steps to run both backend and frontend locally (Windows PowerShell examples):
-
-Backend
+### Backend
 
 ```powershell
 cd backend
@@ -59,69 +41,44 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install -r ..\requirements.txt
-# copy or create a .env file in backend/ with DATABASE_URL and other secrets
 uvicorn main:app --reload --port 8000
 ```
 
-Frontend
+### Frontend
 
 ```powershell
 cd frontend
 npm install
-# set VITE_API_BASE_URL in .env or use the default http://localhost:8000
 npm run dev
 ```
 
-Open the frontend at http://localhost:5173 (Vite default). The frontend expects the backend API under `/api` on the base URL.
+Open the app at http://localhost:5173.
 
-## API endpoints (selected)
+## 📡 API highlights
 
-- `GET /api/` — health check
-- `GET /api/prescriptions/patient/{patient_id}` — prescriptions by patient
-- `POST /api/prescriptions` — create prescription
-- `POST /api/chat` — conversational assistant request
-- `GET /api/appointments/doctor/{doctor_id}` — appointments by doctor
-- `POST /api/appointments` — create appointment
+- GET /api/ — health check
+- GET /api/prescriptions/patient/{patient_id} — fetch prescriptions for a patient
+- POST /api/prescriptions — add a prescription
+- POST /api/chat — submit a patient chat request
+- GET /api/appointments/doctor/{doctor_id} — fetch appointments
+- POST /api/appointments — create an appointment
 
-Check the `backend/routes/` folder for complete route implementations.
+## 🧭 Recommended workflow
 
-## Testing
+1. Start the backend on port 8000
+2. Start the frontend on port 5173
+3. Use the doctor dashboard for practice overviews and alerts
+4. Use the patient portal for medication questions and active prescriptions
 
-- Unit/integration tests are not included in this prototype. For manual verification:
-  - Use Postman or curl to call backend endpoints
-  - Run the frontend and exercise the UI flows
+## 🔒 Deployment notes
 
-## Deployment notes
+- Configure the frontend to use VITE_API_BASE_URL for the backend base URL in production
+- Protect patient data and avoid using demo credentials in real environments
+- Add authentication and role-based access control before going live
 
-- Use environment-specific secrets (do not hardcode API keys)
-- Add authentication (OAuth/JWT) and RBAC before production use
-- Configure CORS and HTTPS for a production environment
+## 🌱 Planned improvements
 
-## Project structure
-
-See these key files and folders:
-
-- `backend/main.py` — FastAPI app entry
-- `backend/database.py` — DB connection and session helper
-- `backend/routes/` — API route modules (appointments, prescriptions, chatbot, twilio_webhook)
-- `backend/services/` — integration helpers (claude_service, twilio_service, scheduler)
-- `frontend/src/` — React source, pages for Appointments, DoctorDashboard, PatientPortal
-
-## Contributing
-
-- Open an issue or submit a pull request with a clear description of the change.
-- Create feature branches and keep commits focused (one change per PR).
-
-## License & contact
-
-This repository does not include a license file; add one if you intend to publish. For questions, reach out via the repo issues.
-
----
-
-If you want, I can also:
-
-- add a `CONTRIBUTING.md` with PR/testing checklist
-- add a basic `Dockerfile` and `docker-compose.yml` for local development
-- create a small health-check script for CI
-
-Tell me which follow-up you want next.
+- User authentication and patient login
+- Medication adherence analytics
+- Smarter reminder workflows and SMS history
+- Stronger AI prompt review and medical validation
