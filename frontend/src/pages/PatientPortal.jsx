@@ -68,8 +68,8 @@ export default function PatientPortal({ patientId = 1 }) {
 
       <main className="mx-auto max-w-5xl space-y-8 px-4 pt-8 sm:px-6">
         <section className="rounded-[28px] border border-slate-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:p-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
+          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+            <div>
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-700">
                 <Sparkles size={16} />
                 Personalized care, simplified
@@ -77,12 +77,16 @@ export default function PatientPortal({ patientId = 1 }) {
               <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Your care plan, made easy to follow.</h1>
               <p className="mt-3 text-lg text-slate-600">Review active prescriptions, ask medication questions, and stay on top of your treatment.</p>
             </div>
-            <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4 text-sm text-emerald-700">
-              <div className="flex items-center gap-2 font-semibold">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+              <div className="flex items-center gap-2 font-semibold text-slate-900">
                 <ShieldCheck size={16} />
-                Secure and private
+                Care plan snapshot
               </div>
-              <p className="mt-1 text-emerald-700/80">All guidance is designed to support you without replacing professional advice.</p>
+              <p className="mt-3 text-sm text-slate-500">2 active medications • 1 refill reminder • AI chat ready</p>
+              <div className="mt-4 grid gap-3 text-sm text-slate-600">
+                <div className="rounded-2xl bg-white p-3 shadow-sm">Medication reminders will be sent via SMS when enabled.</div>
+                <div className="rounded-2xl bg-white p-3 shadow-sm">Your chat history is private and only used for care guidance.</div>
+              </div>
             </div>
           </div>
         </section>
@@ -91,12 +95,13 @@ export default function PatientPortal({ patientId = 1 }) {
           <div className="rounded-[24px] border border-teal-100 bg-gradient-to-br from-teal-50 to-cyan-50 p-6 shadow-sm">
             <p className="text-xs uppercase tracking-[0.24em] text-teal-700">Quick actions</p>
             <h2 className="mt-4 text-2xl font-semibold text-slate-900">Try one of these prompts</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <p className="mt-2 text-sm text-teal-700/90">Ask about your dose, timing, or how to take medications safely.</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {quickPrompts.map(text => (
                 <button
                   key={text}
                   onClick={() => setQuestion(text)}
-                  className="rounded-full border border-teal-200 bg-white px-4 py-2 text-sm font-medium text-teal-700 transition hover:border-teal-300 hover:bg-teal-100"
+                  className="rounded-2xl border border-teal-200 bg-white px-4 py-3 text-left text-sm font-medium text-slate-800 transition hover:border-teal-300 hover:bg-teal-100"
                 >
                   {text}
                 </button>

@@ -65,7 +65,10 @@ export default function DoctorDashboard() {
               />
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <button className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-blue-300 hover:bg-white hover:text-blue-700">
+              + New appointment
+            </button>
             <button className="relative rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100">
               <Bell size={20} />
               <span className="absolute right-1 top-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-red-500"></span>
@@ -116,6 +119,15 @@ export default function DoctorDashboard() {
                   </div>
                 )
               })}
+            </div>
+
+            <div className="grid gap-3 rounded-[24px] border border-slate-200/80 bg-slate-50 p-5 shadow-sm sm:grid-cols-3">
+              {['Compliant', 'Missed Dose', 'Action Needed'].map((status, index) => (
+                <div key={index} className="rounded-3xl bg-white p-4 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">{status}</p>
+                  <p className="mt-2 text-sm text-slate-600">{status === 'Compliant' ? 'Stable medication adherence' : status === 'Missed Dose' ? 'Needs immediate check-in' : 'Follow up required'}</p>
+                </div>
+              ))}
             </div>
 
             <div className="overflow-hidden rounded-[24px] border border-slate-200/80 bg-white shadow-sm">

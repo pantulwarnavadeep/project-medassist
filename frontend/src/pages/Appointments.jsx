@@ -81,19 +81,24 @@ export default function Appointments() {
 
         <div className="flex-1 overflow-auto p-6 md:p-8">
           <div className="mx-auto max-w-6xl rounded-[28px] border border-slate-200/80 bg-white p-4 shadow-sm sm:p-6">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+            <div className="mb-5 grid gap-4 sm:grid-cols-2 items-center rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4">
               <div>
-                <p className="text-sm font-semibold text-slate-700">Today: 4 upcoming visits</p>
-                <p className="text-sm text-slate-500">Keep your schedule balanced and patient-ready.</p>
+                <p className="text-sm font-semibold text-slate-700">Upcoming this week</p>
+                <h2 className="mt-2 text-2xl font-bold text-slate-900">4 appointments scheduled</h2>
+                <p className="mt-1 text-sm text-slate-500">Click any appointment to update the time or details.</p>
               </div>
-              <div className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700">Live calendar</div>
+              <div className="rounded-3xl border border-blue-100 bg-blue-50 p-4 text-sm text-blue-700">
+                <p className="font-semibold">Next visit</p>
+                <p className="mt-2">Alice Johnson at 10:00 AM</p>
+              </div>
             </div>
             <style>{`
               .fc-toolbar-title { font-size: 1.2rem !important; font-weight: 700 !important; color: #1e293b; }
               .fc-button-primary { background-color: #2563eb !important; border-color: #2563eb !important; box-shadow: none !important; }
               .fc-button-primary:hover { background-color: #1d4ed8 !important; border-color: #1d4ed8 !important; }
-              .fc-event { cursor: move; border-radius: 8px; padding: 2px 6px; border: none; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%); }
-              .fc-timegrid-slot { height: 3em !important; }
+              .fc-event { cursor: move; border-radius: 12px; padding: 6px 10px; border: none; background: linear-gradient(90deg, #22c55e 0%, #2563eb 100%); color: white; }
+              .fc-daygrid-event-dot { background-color: transparent !important; }
+              .fc-timegrid-slot { height: 3.25em !important; }
             `}</style>
             <FullCalendar
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
